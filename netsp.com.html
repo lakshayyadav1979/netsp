@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetSP - Network Speed Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+        }
+        .result p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .spinner {
+            margin-top: 20px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #007bff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>NetSP - Network Speed Test</h1>
+        <button onclick="runSpeedTest()">Start Speed Test</button>
+        
+        <div id="spinner" class="spinner" style="display: none;"></div>
+
+        <div class="result" id="result">
+            <!-- Speed test results will be shown here -->
+        </div>
+    </div>
+
+    <script>
+        function runSpeedTest() {
+            // Show the loading spinner
+            document.getElementById('spinner').style.display = 'inline-block';
+            document.getElementById('result').innerHTML = ""; // Clear previous results
+
+            // Simulate speed test results (for demonstration)
+            setTimeout(function() {
+                const downloadSpeed = (Math.random() * (50 - 5) + 5).toFixed(2);  // Simulated download speed
+                const uploadSpeed = (Math.random() * (20 - 2) + 2).toFixed(2);    // Simulated upload speed
+                const ping = (Math.random() * (50 - 10) + 10).toFixed(0);          // Simulated ping
+
+                // Hide the spinner and display results
+                document.getElementById('spinner').style.display = 'none';
+                document.getElementById('result').innerHTML = `
+                    <p>Download Speed: ${downloadSpeed} Mbps</p>
+                    <p>Upload Speed: ${uploadSpeed} Mbps</p>
+                    <p>Ping: ${ping} ms</p>
+                `;
+            }, 3000); // Simulate a 3-second delay
+        }
+    </script>
+
+</body>
+</html>
